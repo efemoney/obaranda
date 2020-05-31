@@ -1,0 +1,9 @@
+# Default ignored files
+/artifacts
+/caches
+/dictionaries
+/libraries
+/shelf/
+
+/modules.xml
+/workspace.xml

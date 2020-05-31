@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2020 Efeturi Money. All rights reserved.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/home_coordinator"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:clipChildren="false"
+  android:clipToPadding="false"
+  android:fitsSystemWindows="false"
+  android:orientation="vertical"
+  tools:context=".latest.LatestFragment">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/colorBackground"
+    app:expanded="true">
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="72dp"
+      android:minHeight="?attr/actionBarSize"
+      app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+      <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/grid_spacing"
+        android:layout_marginRight="@dimen/grid_spacing"
+        android:fontFamily="@font/din_medium"
+        android:text="@string/home_title"
+        android:textColor="@color/dark_grey_blue"
+        android:textSize="24sp" />
+
+    </FrameLayout>
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:spanCount="@integer/grid_span_count"
+    tools:itemCount="5"
+    tools:listitem="@layout/home_grid_item"
+    tools:visibility="visible" />
+
+  <ProgressBar
+    android:id="@+id/progress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    tools:visibility="gone" />
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/error_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <TextView
+      android:id="@+id/error_text"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:textSize="16sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintWidth_percent="0.6"
+      tools:text="An error occurred" />
+
+    <Button
+      android:id="@+id/error_action"
+      style="@style/Widget.AppCompat.Button.Borderless.Colored"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/error_text"
+      tools:text="Retry" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

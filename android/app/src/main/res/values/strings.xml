@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright 2020 Efeturi Money. All rights reserved.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+  <string name="app_name">Obaranda</string>
+
+  <string name="home">Home</string>
+  <string name="comments">Comments</string>
+  <string name="favorites">Favorites</string>
+  <string name="app_info">App Info</string>
+  <string name="add_comment">Add a comment</string>
+
+  <string name="home_title">Latest Comics</string>
+  <string name="favorites_title">Favorite Comics</string>
+  <string name="no_comments">No comments</string>
+  <string name="sign_in">Sign In</string>
+  <string name="post">Post</string>
+  <string name="avatar">avatar</string>
+
+  <plurals name="comments_title">
+    <item quantity="other">Comments (%1$s)</item>
+    <item quantity="one">Comment (1)</item>
+    <item quantity="zero">@string/comments</item>
+  </plurals>
+
+</resources>

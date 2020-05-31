@@ -1,0 +1,188 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "e72bde82fbd190259c4a73f3af41cdaa",
+    "entities": [
+      {
+        "tableName": "comics",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`comic_page` INTEGER NOT NULL, `expires_at` TEXT NOT NULL, `page` INTEGER NOT NULL, `url` TEXT NOT NULL, `title` TEXT NOT NULL, `pubDate` TEXT NOT NULL, `commentsCount` INTEGER NOT NULL, `commentsThreadId` TEXT NOT NULL, `post_title` TEXT, `post_body` TEXT, `post_transcript` TEXT, `author_name` TEXT NOT NULL, `author_url` TEXT, PRIMARY KEY(`comic_page`))",
+        "fields": [
+          {
+            "fieldPath": "page",
+            "columnName": "comic_page",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expiresAt",
+            "columnName": "expires_at",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.page",
+            "columnName": "page",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.pubDate",
+            "columnName": "pubDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.commentsCount",
+            "columnName": "commentsCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.commentsThreadId",
+            "columnName": "commentsThreadId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.post.title",
+            "columnName": "post_title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "comic.post.body",
+            "columnName": "post_body",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "comic.post.transcript",
+            "columnName": "post_transcript",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "comic.author.name",
+            "columnName": "author_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comic.author.url",
+            "columnName": "author_url",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "comic_page"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "images",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`comic_page` INTEGER NOT NULL, `id` TEXT NOT NULL, `url` TEXT NOT NULL, `alt` TEXT, `width` INTEGER NOT NULL, `height` INTEGER NOT NULL, `color_muted` INTEGER, `color_vibrant` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`comic_page`) REFERENCES `comics`(`comic_page`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "comicPage",
+            "columnName": "comic_page",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image.url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image.alt",
+            "columnName": "alt",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image.size.width",
+            "columnName": "width",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image.size.height",
+            "columnName": "height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image.palette.muted",
+            "columnName": "color_muted",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image.palette.vibrant",
+            "columnName": "color_vibrant",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_images_comic_page",
+            "unique": false,
+            "columnNames": [
+              "comic_page"
+            ],
+            "createSql": "CREATE  INDEX `index_images_comic_page` ON `${TABLE_NAME}` (`comic_page`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "comics",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "comic_page"
+            ],
+            "referencedColumns": [
+              "comic_page"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e72bde82fbd190259c4a73f3af41cdaa\")"
+    ]
+  }
+}

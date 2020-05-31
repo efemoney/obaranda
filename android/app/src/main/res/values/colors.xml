@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2020 Efeturi Money. All rights reserved.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+  <color name="all_fa">#fafafa</color>
+  <color name="all_f7">#f7f7f7</color>
+  <color name="all_21">#212121</color>
+  <color name="all_30">#303030</color>
+
+  <color name="white">#ffffff</color>
+  <color name="silver">#ceced2</color>
+  <color name="black">#000000</color>
+  <color name="black_80">#cc000000</color>
+  <color name="black_54">#8a000000</color>
+  <color name="black_18">#2e000000</color>
+  <color name="black_20">#33000000</color>
+  <color name="black_91">#e9000000</color>
+  <color name="black_00">#00000000</color>
+  <color name="sky_blue">#5ac8fa</color>
+  <color name="pale_grey">#efeff4</color>
+  <color name="bright_blue">#007aff</color>
+  <color name="dark_grey_blue">#253858</color>
+  <color name="dark_grey_blue_30">#4c253858</color>
+  <color name="dark_grey_blue_80">#cc253858</color>
+
+  <!--<color name="primary">#3f51b5</color>-->
+  <!--<color name="primary_dark">#303f9f</color>-->
+  <color name="accent">@color/sky_blue</color>
+
+  <color name="window_light">@color/all_f7</color>
+  <color name="window_dark">@color/all_30</color>
+
+  <color name="navigation_light">@color/all_fa</color>
+  <color name="navigation_dark">@color/all_21</color>
+
+</resources>
