@@ -17,4 +17,4 @@ package com.efemoney.obaranda.data.internal
 
 import retrofit2.HttpException
 
-fun Throwable.declutterHttpMessage(): Throwable = if (this is HttpException) Throwable(message()) else this
+fun Throwable.unwrapHttpMessage(): Throwable = if (this is HttpException) Throwable(message(), this) else this

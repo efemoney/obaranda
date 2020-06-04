@@ -32,12 +32,9 @@ internal class RealCommentRepo @Inject constructor(
 
   override suspend fun getComments(request: CommentsRequest): CommentsResult = dispatchers.network {
     runCatching {
-      CommentsResult(
-        api.listPosts(request.commentThreadId, listOf(approved))
-          .let(mapper::mapJsonList)
-      )
+      CommentsResult(api.listPosts(request.commentThreadId, listOf(approved)).let(mapper::mapJsonList))
     }.getOrElse {
-      CommentsResult(emptyList(), error = it.declutterHttpMessage())
+      CommentsResult(emptyList(), error = it.unwrapHttpMessage())
     }
   }
 }

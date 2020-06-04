@@ -77,7 +77,7 @@ internal class RealComicRepo @Inject constructor(
     }.recoverCatching {
       ComicsResult(
         comics = getLocal(request, forceLocal = true),
-        error = it.declutterHttpMessage()
+        error = it.unwrapHttpMessage()
       )
     }.getOrElse {
       ComicsResult(emptyList(), error = it)

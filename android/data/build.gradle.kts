@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("UnstableApiUsage")
+
 plugins {
   id("com.android.library")
   kotlin("android")
@@ -20,12 +22,14 @@ plugins {
 }
 
 android {
-  val properties = rootProject.file("comments.properties").loadProperties()
+
+  val apiKey = providers
+    .environmentVariable("DISQUS_API_KEY")
+    .forUseAtConfigurationTime()
+    .getOrElse("")
 
   defaultConfig {
-    buildConfigField("String", "COMMENTS_BASE_URL", properties.getProperty("baseUrl"))
-    buildConfigField("String", "API_KEY", properties.getProperty("apiKey"))
-    buildConfigField("String", "FORUM", properties.getProperty("forum"))
+    buildConfigField("String", "API_KEY", apiKey)
   }
 }
 

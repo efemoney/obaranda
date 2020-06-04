@@ -25,7 +25,7 @@ import retrofit2.http.Query
 
 interface DisqusCommentsApi {
 
-  @GET("threads/listPosts.json?api_key=$API_KEY&forum=$FORUM&limit=$MAX_LIMIT")
+  @GET("3.0/threads/listPosts.json?api_key=$API_KEY&forum=obaranda-com&limit=100")
   @Wrapped(path = ["response"])
   suspend fun listPosts(
     @Query("thread") threadId: String,
@@ -34,9 +34,7 @@ interface DisqusCommentsApi {
   ): List<Post>
 
   companion object {
-    const val ENDPOINT = BuildConfig.COMMENTS_BASE_URL
-    private const val FORUM = BuildConfig.FORUM
+    const val ENDPOINT = "https://disqus.com/api/"
     private const val API_KEY = BuildConfig.API_KEY
-    private const val MAX_LIMIT = 100
   }
 }
