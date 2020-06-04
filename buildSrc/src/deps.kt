@@ -32,9 +32,9 @@ object Versions {
   const val okhttp = "4.7.2"
   const val store = "4.0.0-alpha04"
   const val glide = "4.11.0"
-  const val material = "1.2.0-alpha06"
+  const val material = "1.3.0-alpha01"
   const val timber = "4.7.1"
-  const val flowBinding = "0.11.1"
+  const val flowBinding = "0.12.0"
 
   object androidx {
     const val core = "1.4.0-alpha01"
@@ -88,6 +88,7 @@ object Deps {
   }
 
   object ktor {
+    const val bom = "io.ktor:ktor-bom:${Versions.ktor}"
     const val auth = "io.ktor:ktor-auth:${Versions.ktor}"
 
     object content {
@@ -97,6 +98,12 @@ object Deps {
     object server : Dep("io.ktor:ktor-server-core:${Versions.ktor}") {
       const val jvm = "io.ktor:ktor-server-jvm:${Versions.ktor}"
       const val netty = "io.ktor:ktor-server-netty:${Versions.ktor}"
+    }
+
+    object client : Dep("io.ktor:ktor-client-core:${Versions.ktor}") {
+      const val jvm = "io.ktor:ktor-client-jvm:${Versions.ktor}"
+      const val json = "io.ktor:ktor-client-json-jvm:${Versions.ktor}"
+      const val okhttp = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
     }
   }
 

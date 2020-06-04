@@ -34,7 +34,7 @@ inline fun <T : AndroidSourceSet> NamedDomainObjectContainer<T>.addKotlinDirecto
 inline fun File.loadProperties() =
   Properties().also { inputStream().use(it::load) }
 
-inline fun Project.hasDependency(dependencyNotation: Any, inConfiguration: String): Boolean {
+inline fun Project.hasDependency(dependencyNotation: Any, inConfiguration: String = "implementation"): Boolean {
 
   val wanted = dependencies.create(dependencyNotation)
 
