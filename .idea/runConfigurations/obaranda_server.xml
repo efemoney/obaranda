@@ -6,6 +6,8 @@
     </envs>
     <option name="MAIN_CLASS_NAME" value="io.ktor.server.netty.EngineMain" />
     <module name="obaranda.server" />
+    <option name="PROGRAM_PARAMETERS" value="-config=application-local.conf" />
+    <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
