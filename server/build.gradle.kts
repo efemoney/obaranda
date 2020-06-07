@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("UnstableApiUsage")
+
 plugins {
   application
   kotlin
@@ -31,9 +33,30 @@ sourceSets {
   }
 }
 
-tasks.register("stage") {
-  dependsOn(tasks.installDist)
-  mustRunAfter(tasks.clean)
+
+tasks {
+
+  val generateServiceAccount by registering {
+    val serviceAccountContents = providers.environmentVariable("GOOGLE_APPLICATION_CREDENTIALS_CONTENTS")
+    val serviceAccountDir = file("$buildDir/generated-service-account")
+
+    inputs.property("contents", Callable { serviceAccountContents.orNull })
+    outputs.dir(serviceAccountDir)
+
+    mustRunAfter(clean)
+
+    doLast {
+      serviceAccountContents.orNull?.let { contents ->
+        serviceAccountDir.mkdirs()
+        File(serviceAccountDir, "service-account.json").writeText(contents)
+      }
+    }
+  }
+
+  register("stage") {
+    dependsOn(installDist)
+    mustRunAfter(clean, generateServiceAccount)
+  }
 }
 
 dependencies {
