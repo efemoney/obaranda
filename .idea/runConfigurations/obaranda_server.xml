@@ -9,7 +9,7 @@
     <option name="PROGRAM_PARAMETERS" value="-config=application-local.conf" />
     <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     <method v="2">
-      <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="false" tasks="stage" externalProjectPath="$PROJECT_DIR$/server" vmOptions="" scriptParameters="-PexcludeAndroid=true" />
     </method>
   </configuration>
 </component>

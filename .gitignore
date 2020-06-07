@@ -4,6 +4,7 @@
 .gradle/
 .DS_Store
 .externalNativeBuild
+application-local.conf
 comments.properties
 local.properties
 
