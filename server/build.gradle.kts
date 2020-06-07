@@ -46,11 +46,8 @@ tasks {
 
     doLast {
       serviceAccountContents.orNull?.let { contents ->
-        logger.warn("Found service account contents: $contents")
         serviceAccountDir.mkdirs()
-        File(serviceAccountDir, "service-account.json").also {
-          logger.warn("Writing service account contents to: $it")
-        }.writeText(contents)
+        File(serviceAccountDir, "service-account.json").writeText(contents)
       }
     }
   }
