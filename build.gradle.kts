@@ -41,6 +41,7 @@ subprojects {
 
   pluginManager.withAnyPlugin("java", "kotlin", "android", "android-library") {
     dependencies {
+      "implementation"(platform(Deps.ktor.bom))
       "implementation"(platform(Deps.kotlin.bom))
       "implementation"(platform(Deps.kotlinx.coroutines.bom))
     }
@@ -107,7 +108,7 @@ subprojects {
     tasks.withType<KotlinCompile<*>>().configureEach {
       kotlinOptions {
         freeCompilerArgs = listOf(
-          "-XXLanguage:+NewInference",
+          "-Xnew-inference",
           "-Xopt-in=kotlin.RequiresOptIn",
           "-Xopt-in=kotlin.ExperimentalStdlibApi",
           "-Xopt-in=kotlin.time.ExperimentalTime",

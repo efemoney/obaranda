@@ -4,12 +4,20 @@
     <option name="links">
       <list>
         <IssueNavigationLink>
-          <option name="issueRegexp" value="#([0-9]+)" />
+          <option name="issueRegexp" value="#(\d+)" />
           <option name="linkRegexp" value="https://github.com/efemoney/obaranda/issues/$1" />
         </IssueNavigationLink>
         <IssueNavigationLink>
-          <option name="issueRegexp" value="(\w+)/(\w+)/#([0-9]+)" />
+          <option name="issueRegexp" value="(\w+)/(\w+)/#(\d+)" />
           <option name="linkRegexp" value="https://github.com/$1/$2/issues/$3" />
+        </IssueNavigationLink>
+        <IssueNavigationLink>
+          <option name="issueRegexp" value="KT\-\d+" />
+          <option name="linkRegexp" value="http://youtrack.jetbrains.com/issue/$0" />
+        </IssueNavigationLink>
+        <IssueNavigationLink>
+          <option name="issueRegexp" value="KEEP\-(\d+)" />
+          <option name="linkRegexp" value="https://github.com/Kotlin/KEEP/issues/$1" />
         </IssueNavigationLink>
       </list>
     </option>
