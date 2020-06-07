@@ -32,7 +32,8 @@ sourceSets {
 }
 
 tasks.register("stage") {
-  dependsOn("installDist")
+  dependsOn(tasks.installDist)
+  mustRunAfter(tasks.clean)
 }
 
 dependencies {
