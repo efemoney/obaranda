@@ -37,8 +37,8 @@ fun Application.routes() = routing {
     get("/comics", GetAllComics)
     get("/comics/{page}", GetComicPage)
     get("/comics/latest", GetComicLatest)
-    put("/users/token", compose(Authenticate, SaveUserToken))
-    put("/users/page", compose(Authenticate, SaveUserPage))
+    put("/users/token", compose(AuthenticateUser, SaveUserToken))
+    put("/users/page", compose(AuthenticateUser, SaveUserPage))
   }
 
   authenticate("cron") {

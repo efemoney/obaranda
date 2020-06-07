@@ -24,8 +24,11 @@ import io.ktor.auth.basic
 
 fun Application.auth() = authentication {
   basic("cron") {
+    realm = "cron-job"
     validate { (name, password) ->
-      if (name == "" && password == "") Check else null
+      val requiredName = environment.config.property("cron.username").getString()
+      val requiredPassword = environment.config.property("cron.password").getString()
+      if (name == requiredName && password == requiredPassword) Check else null
     }
   }
 }

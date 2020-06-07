@@ -18,8 +18,10 @@ package com.efemoney.obaranda.model
 import com.efemoney.obaranda.await
 import com.efemoney.obaranda.data
 import com.efemoney.obaranda.errors.ComicNotFoundException
+import com.google.cloud.firestore.DocumentSnapshot
 import com.google.cloud.firestore.Firestore
 import com.google.cloud.firestore.Query.Direction.DESCENDING
+import com.google.cloud.firestore.SetOptions
 import com.squareup.moshi.JsonClass
 import javax.inject.Inject
 
@@ -41,7 +43,8 @@ internal class Comics @Inject constructor(private val firestore: Firestore) {
       .collection("internal")
       .document("comics-meta")
       .await()
-      .let { it.takeIf { it.exists() }?.getLong("total-count") ?: 0 }
+      .takeIf(DocumentSnapshot::exists)
+      ?.getLong("total-count") ?: 0
   }
 
   suspend fun getByPage(page: Int): Comic {
@@ -50,7 +53,8 @@ internal class Comics @Inject constructor(private val firestore: Firestore) {
       .whereEqualTo("page", page)
       .await()
       .documents
-      .run { if (size == 1) get(0).data() else throw ComicNotFoundException("page $page") }
+      .singleOrNull()
+      ?.data() ?: throw ComicNotFoundException("page $page")
   }
 
   suspend fun getByLatest(): Comic {
@@ -60,7 +64,38 @@ internal class Comics @Inject constructor(private val firestore: Firestore) {
       .limit(1)
       .await()
       .documents
-      .run { if (size == 1) get(0).data() else throw ComicNotFoundException("latest") }
+      .singleOrNull()
+      ?.data() ?: throw ComicNotFoundException("latest")
+  }
+
+  suspend fun getPageByThreadId(threadId: String): Int? {
+    return firestore.collection("comics")
+      .whereEqualTo("commentsThreadId", threadId)
+      .await()
+      .singleOrNull()
+      ?.id
+      ?.toInt()
+  }
+
+  suspend fun putCommentsCount(page: Int, postCount: Int) {
+    firestore.collection("comics")
+      .document("$page")
+      .set(mapOf("commentsCount" to postCount), SetOptions.merge())
+      .await()
+  }
+
+  suspend fun deleteComicByPage(page: Int) {
+    firestore.collection("comics")
+      .document("$page")
+      .delete()
+      .await()
+  }
+
+  suspend fun putComic(comic: Comic) {
+    firestore.collection("comics")
+      .document("${comic.page}")
+      .set(comic)
+      .await()
   }
 }
 

@@ -15,24 +15,43 @@
 
 package com.efemoney.obaranda.model
 
+import com.efemoney.obaranda.await
+import com.efemoney.obaranda.parse
 import com.google.cloud.firestore.Firestore
+import com.google.cloud.firestore.SetOptions
+import java.time.Instant
 import javax.inject.Inject
 
 internal class Settings @Inject constructor(private val firestore: Firestore) {
 
-  suspend fun getLastPolledTime(): Unit {
-
+  suspend fun getLastPolledTime(): Instant? {
+    return firestore.collection("internal")
+      .document("settings")
+      .await()
+      .getString("last-poll")
+      ?.parse()
   }
 
-  suspend fun setLastPolledTime(): Unit {
-
+  suspend fun setLastPolledTime(atWhen: Instant) {
+    firestore.collection("internal")
+      .document("settings")
+      .set(mapOf("last-poll" to "$atWhen"), SetOptions.merge())
+      .await()
   }
 
-  suspend fun getLastPolledCommentTime(): Unit {
-
+  suspend fun getLastPolledCommentTime(): Instant? {
+    return firestore
+      .collection("internal")
+      .document("settings")
+      .await()
+      .getString("last-comment-poll")
+      ?.parse()
   }
 
-  suspend fun setLastPolledCommentTime(): Unit {
-
+  suspend fun setLastPolledCommentTime(atWhen: Instant) {
+    firestore.collection("internal")
+      .document("settings")
+      .set(mapOf("last-comment-poll" to "$atWhen"), SetOptions.merge())
+      .await()
   }
 }

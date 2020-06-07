@@ -16,6 +16,7 @@
 package com.efemoney.obaranda
 
 import com.efemoney.obaranda.model.Comics
+import com.efemoney.obaranda.model.Settings
 import com.efemoney.obaranda.model.User
 import com.squareup.moshi.Moshi
 import dagger.BindsInstance
@@ -37,7 +38,7 @@ internal annotation class CallScope
 
 @ApplicationScope
 @Component(
-  modules = [FirebaseAdminModule::class, MoshiModule::class],
+  modules = [FirebaseAdminModule::class, ApiModule::class, MoshiModule::class],
   dependencies = [ApplicationEnvironment::class]
 )
 internal interface ApplicationComponent {
@@ -47,6 +48,10 @@ internal interface ApplicationComponent {
   fun config(): ApplicationConfig
 
   fun moshi(): Moshi
+
+  fun disqus(): DisqusApi
+
+  fun streaming(): StreamingApi
 
   @Component.Factory
   interface Factory {
@@ -58,6 +63,8 @@ internal interface ApplicationComponent {
 @CallScope
 @Subcomponent
 internal interface CallComponent {
+
+  fun settings(): Settings
 
   fun comics(): Comics
 

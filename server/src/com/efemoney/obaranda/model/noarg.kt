@@ -15,4 +15,10 @@
 
 package com.efemoney.obaranda.model
 
+/**
+ * Instructs the kotlin compiler to generate no-arg constructor for the annotated class.
+ * Required by firebase admin's internal json to POJO converter.
+ *
+ * Tbh I wish firebase would *just* support custom converters :/
+ */
 annotation class NoArgConstructor

@@ -30,7 +30,7 @@ val GetAllComics: RouteHandler = {
   val limit: Int by call.request.queryParameters
   val offset: Int by call.request.queryParameters
 
-  val comicsClient = context.component.comics()
+  val comicsClient = comics
   val comics = comicsClient.getAll(limit, offset)
   val totalCount = comicsClient.getTotalCount()
 
@@ -55,11 +55,10 @@ val GetAllComics: RouteHandler = {
 val GetComicPage: RouteHandler = {
   val page: Int by call.parameters
 
-  val comic = context.component.comics().getByPage(page)
-  call.respond(HttpStatusCode.OK, comic)
+  call.respond(HttpStatusCode.OK, comics.getByPage(page))
 }
 
 val GetComicLatest: RouteHandler = {
-  val comic = context.component.comics().getByLatest()
-  call.respond(HttpStatusCode.OK, comic)
+
+  call.respond(HttpStatusCode.OK, comics.getByLatest())
 }

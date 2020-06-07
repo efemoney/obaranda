@@ -30,7 +30,7 @@ val SaveUserPage: RouteHandler = {
   TODO()
 }
 
-val Authenticate: RouteHandler = {
+val AuthenticateUser: RouteHandler = {
 
   call.userRecord = call.request.header("X-Auth-Uid")
     ?.let { call.component.user().userByUid(it) }

@@ -15,12 +15,9 @@
 
 package com.efemoney.obaranda
 
-import io.ktor.application.ApplicationCall
 import io.ktor.util.pipeline.Pipeline
 import io.ktor.util.pipeline.PipelineInterceptor
 import io.ktor.util.pipeline.PipelinePhase
-
-typealias RouteHandler = PipelineInterceptor<Unit, ApplicationCall>
 
 /**
  * Compose multiple pipeline [interceptors] into one. This executes [interceptors] in a new pipeline running in this

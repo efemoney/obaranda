@@ -38,8 +38,15 @@ tasks.register("stage") {
 dependencies {
   implementation(Deps.kotlin.stdlib.jdk8)
 
+  implementation(Deps.okHttp)
+  implementation(Deps.okHttp.logging)
+
   implementation(Deps.moshi)
+  implementation(Deps.moshi.lazyAdapters)
   kapt(Deps.moshi.kotlinCodegen)
+
+  implementation(Deps.retrofit)
+  implementation(Deps.retrofit.converter.moshi)
 
   implementation(Deps.kotlinx.coroutines.core)
 
@@ -51,6 +58,7 @@ dependencies {
   implementation(Deps.dagger)
   kapt(Deps.dagger.compiler)
 
+  implementation("com.github.trickl:palette:0.1.1")
   implementation("ch.qos.logback:logback-classic:1.2.3")
   implementation("com.google.firebase:firebase-admin:6.13.0")
 }
