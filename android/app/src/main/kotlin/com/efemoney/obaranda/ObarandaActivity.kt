@@ -28,7 +28,6 @@ import androidx.navigation.Navigator.Extras
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import com.efemoney.obaranda.MainFragmentDirections.Companion.actionGotoComic
-import com.efemoney.obaranda.R.id
 import com.efemoney.obaranda.app.FragmentsModule
 import com.efemoney.obaranda.app.ViewModelsModule
 import com.efemoney.obaranda.databinding.ActivityObarandaBinding
@@ -103,20 +102,16 @@ interface ActivityComponent {
 interface Navigator {
 
   fun navigate(directions: NavDirections)
+}
 
-  fun showComicDetails(page: Int)
+fun Navigator.showComicDetails(page: Int) {
+  navigate(actionGotoComic(page))
 }
 
 class NavigatorViewModel @Inject constructor() : Navigator, ViewModel() {
-
   val channel = Channel<NavDirections>()
-
   override fun navigate(directions: NavDirections) {
     channel.offer(directions)
-  }
-
-  override fun showComicDetails(page: Int) {
-    navigate(actionGotoComic(id.comic))
   }
 }
 

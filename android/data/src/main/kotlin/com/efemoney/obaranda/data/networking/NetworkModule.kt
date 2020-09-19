@@ -21,6 +21,7 @@ import com.serjltt.moshi.adapters.Wrapped
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
@@ -34,7 +35,7 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-  @[Provides Singleton]
+  @[Provides Reusable]
   fun logger() = object : Logger {
     override fun log(message: String) {
       i("OkHttp") { message }

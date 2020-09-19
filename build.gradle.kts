@@ -22,7 +22,7 @@ import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.gradle.api.JavaVersion.VERSION_1_8 as java8
 
 plugins {
-  id("com.github.ben-manes.versions") version "0.28.0"
+  id("com.github.ben-manes.versions") version "0.31.0"
 }
 
 allprojects {
@@ -64,6 +64,9 @@ subprojects {
           arg("dagger.fastInit", "enabled")
           arg("dagger.experimentalDaggerErrorMessages", "enabled")
         }
+        if (hasDependency(Deps.dagger.hilt.compiler, inConfiguration = "kapt")) {
+          arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")
+        }
       }
     }
   }
@@ -75,17 +78,15 @@ subprojects {
     }
 
     configure<BaseExtension> {
-      compileSdkVersion(29)
-      buildToolsVersion("29.0.3")
+      compileSdkVersion(30)
 
       defaultConfig {
         minSdkVersion(21)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
 
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled = true
       }
 
       sourceSets.addKotlinDirectories()
@@ -95,11 +96,22 @@ subprojects {
         isCoreLibraryDesugaringEnabled = true
 
         project.dependencies {
-          "coreLibraryDesugaring"("com.android.tools:desugar_jdk_libs:1.0.5")
+          "coreLibraryDesugaring"("com.android.tools:desugar_jdk_libs:1.0.10")
         }
 
         sourceCompatibility = java8
         targetCompatibility = java8
+      }
+
+      buildFeatures.run {
+        buildConfig = false
+        viewBinding = false
+        aidl = false
+        prefab = false
+        compose = false
+        shaders = false
+        resValues = false
+        renderScript = false
       }
     }
   }
@@ -107,8 +119,9 @@ subprojects {
   afterEvaluate {
     tasks.withType<KotlinCompile<*>>().configureEach {
       kotlinOptions {
-        freeCompilerArgs = listOf(
+        freeCompilerArgs = freeCompilerArgs + listOf(
           "-Xnew-inference",
+          "-Xjvm-default=all",
           "-Xopt-in=kotlin.RequiresOptIn",
           "-Xopt-in=kotlin.ExperimentalStdlibApi",
           "-Xopt-in=kotlin.time.ExperimentalTime",

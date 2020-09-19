@@ -26,15 +26,19 @@ gradleEnterprise {
   }
 }
 
-include(":server")
+include(
+  ":server",
+  ":tooling:updateable-api",
+  ":tooling:updateable-compiler"
+)
 
 if (excludeAndroid?.toBoolean() != true) {
   include(
     ":android:app",
     ":android:data",
-    ":android:core"
+    ":android:core",
+    ":android:compose"
   )
 }
 
-// https://docs.gradle.org/6.5-rc-1/release-notes.html#new-features-and-usability-improvements
-// enableFeaturePreview("VERSION_ORDERING_V2")
+enableFeaturePreview("VERSION_ORDERING_V2")

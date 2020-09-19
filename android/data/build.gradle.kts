@@ -23,14 +23,13 @@ plugins {
 
 android {
 
-  val apiKey = providers
-    .environmentVariable("DISQUS_API_KEY")
-    .forUseAtConfigurationTime()
-    .getOrElse("")
+  val apiKey = providers.environmentVariable("DISQUS_API_KEY").forUseAtConfigurationTime().getOrElse("")
 
   defaultConfig {
-    buildConfigField("String", "API_KEY", apiKey)
+    buildConfigField("String", "DISQUS_API_KEY", "\"$apiKey\"")
   }
+
+  buildFeatures.buildConfig = true
 }
 
 kapt {
@@ -44,8 +43,10 @@ kapt {
 dependencies {
   implementation(project(":android:core"))
 
-  kapt(Deps.dagger.compiler)
   implementation(Deps.dagger)
+  implementation(Deps.dagger.hilt)
+  kapt(Deps.dagger.compiler)
+  kapt(Deps.dagger.hilt.compiler)
   implementation(Deps.jsr250)
 
   implementation(Deps.okio)

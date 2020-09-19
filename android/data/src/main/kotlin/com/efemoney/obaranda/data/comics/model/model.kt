@@ -18,7 +18,7 @@ package com.efemoney.obaranda.data.comics.model
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Comic(
+internal data class Comic(
   val url: String,
   val page: Int,
   val title: String,
@@ -31,20 +31,20 @@ data class Comic(
 )
 
 @JsonClass(generateAdapter = true)
-data class Author(
+internal data class Author(
   val name: String,
   val url: String?
 )
 
 @JsonClass(generateAdapter = true)
-data class Post(
+internal data class Post(
   val title: String?,
   val body: String?,
   val transcript: String?
 )
 
 @JsonClass(generateAdapter = true)
-data class Image(
+internal data class Image(
   val url: String,
   val alt: String?,
   val size: Size,
@@ -52,13 +52,13 @@ data class Image(
 )
 
 @JsonClass(generateAdapter = true)
-data class Palette(
+internal data class Palette(
   val muted: String?,
   val vibrant: String?
 )
 
 @JsonClass(generateAdapter = true)
-data class Size(
+internal data class Size(
   val width: Int,
   val height: Int
 )

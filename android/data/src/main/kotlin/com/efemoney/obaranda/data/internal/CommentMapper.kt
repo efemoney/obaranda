@@ -33,24 +33,22 @@ internal class CommentMapper @Inject constructor() {
       .filter { it.parent != null }
       .groupBy { it.parent!! }
 
-    return rootList.map {
-      postToComment(it, parentChildrenMap)
-    }
+    return rootList.map { it.toComment(parentChildrenMap) }
   }
 
-  private fun postToComment(post: Post, children: Map<Long, List<Post>>): Comment {
+  private fun Post.toComment(children: Map<Long, List<Post>>): Comment {
 
     return Comment(
-      id = post.id,
-      avatar = with(post.author.avatar) { if (isCustom) permalink else null },
-      userName = post.author.username,
-      displayName = post.author.name,
-      votesCount = post.points,
-      upvoteCount = post.likes,
-      downvoteCount = post.dislikes,
-      rawText = post.raw_message,
-      media = post.media.map(::mapMedia),
-      children = children[post.id]?.map { postToComment(it, children) } ?: emptyList()
+      id = id,
+      avatar = with(author.avatar) { if (isCustom) permalink else null },
+      userName = author.username,
+      displayName = author.name,
+      votesCount = points,
+      upvoteCount = likes,
+      downvoteCount = dislikes,
+      rawText = raw_message,
+      media = media.map(::mapMedia),
+      children = children[id]?.map { it.toComment(children) } ?: emptyList()
     )
   }
 

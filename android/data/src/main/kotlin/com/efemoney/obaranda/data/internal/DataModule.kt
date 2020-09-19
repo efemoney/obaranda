@@ -20,24 +20,26 @@ import com.efemoney.obaranda.data.CommentRepo
 import com.efemoney.obaranda.data.comics.ComicsDataModule
 import com.efemoney.obaranda.data.comments.CommentsDataModule
 import com.efemoney.obaranda.data.networking.NetworkModule
-import com.efemoney.obaranda.inject.DispatchersModule
+import com.efemoney.obaranda.dispatchers.Dispatchers
 import dagger.Binds
 import dagger.Module
 
 @Module(
   includes = [
-    DispatchersModule::class,
     DbModule::class,
     NetworkModule::class,
     ComicsDataModule::class,
     CommentsDataModule::class
   ]
 )
-internal abstract class DataModule {
+internal interface DataModule {
 
   @Binds
-  abstract fun comics(realComicRepo: RealComicRepo): ComicRepo
+  fun AppDispatchers.asDispatchers(): Dispatchers
 
   @Binds
-  abstract fun comments(realCommentRepo: RealCommentRepo): CommentRepo
+  fun RealComicRepo.asComicRepo(): ComicRepo
+
+  @Binds
+  fun RealCommentRepo.asCommentRepo(): CommentRepo
 }

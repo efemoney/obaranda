@@ -23,7 +23,7 @@ import com.serjltt.moshi.adapters.Wrapped
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface DisqusCommentsApi {
+internal interface DisqusCommentsApi {
 
   @GET("3.0/threads/listPosts.json?api_key=$API_KEY&forum=obaranda-com&limit=100")
   @Wrapped(path = ["response"])
@@ -35,6 +35,6 @@ interface DisqusCommentsApi {
 
   companion object {
     const val ENDPOINT = "https://disqus.com/api/"
-    private const val API_KEY = BuildConfig.API_KEY
+    private const val API_KEY = BuildConfig.DISQUS_API_KEY
   }
 }

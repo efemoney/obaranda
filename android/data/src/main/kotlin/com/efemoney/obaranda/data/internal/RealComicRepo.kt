@@ -47,8 +47,7 @@ internal class RealComicRepo @Inject constructor(
   private lateinit var sessionExpiresAt: OffsetDateTime
 
   override suspend fun getComic(page: Int) = dispatchers.disk {
-    comicsDao.getComic(page)
-      .let(mapper::mapLocal)
+    comicsDao.getComic(page).let(mapper::mapLocal)
   }
 
   override suspend fun getComics(request: ComicsRequest) = dispatchers.disk {
@@ -99,13 +98,11 @@ internal class RealComicRepo @Inject constructor(
   private suspend fun getLocal(request: ComicsRequest, forceLocal: Boolean) = dispatchers.disk {
     val expiresAfter = if (forceLocal) epochZero else Instant.now()
 
-    comicsDao.getComics(request.limit, request.offset, expiresAfter)
-      .let(mapper::mapLocalList)
+    comicsDao.getComics(request.limit, request.offset, expiresAfter).let(mapper::mapLocalList)
   }
 
   private suspend fun getNetwork(request: ComicsRequest) = dispatchers.network {
-    api.getComics(request.limit, request.offset)
-      .let(mapper::mapJsonList)
+    api.getComics(request.limit, request.offset).let(mapper::mapJsonList)
   }
 
   private inline fun notEmpty(it: List<Comic>) = it.isNotEmpty()

@@ -22,7 +22,7 @@ import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-object CommentsDataModule {
+internal object CommentsDataModule {
 
   @[Provides Singleton]
   fun commentsApi(builder: Retrofit.Builder) =

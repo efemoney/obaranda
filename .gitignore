@@ -1,6 +1,7 @@
-/build
+build
 /captures
 
+.idea/modules/
 .gradle/
 .DS_Store
 .externalNativeBuild
@@ -9,6 +10,3 @@ comments.properties
 local.properties
 
 *.iml
-
-# Project exclude paths
-/buildSrc/build

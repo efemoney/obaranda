@@ -18,20 +18,22 @@ package com.efemoney.obaranda.data.internal
 import android.content.Context
 import androidx.room.Room
 import com.efemoney.obaranda.data.internal.db.Database
-import com.efemoney.obaranda.inject.qualifier.AppContext
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
 internal object DbModule {
 
   @[Provides Singleton]
-  fun db(@AppContext context: Context) = Room.databaseBuilder(context, Database::class.java, "obaranda.db").build()
+  fun db(@ApplicationContext context: Context) =
+    Room.databaseBuilder(context, Database::class.java, "obaranda.db").build()
 
-  @[Provides Singleton]
+  @[Provides Reusable]
   fun comicsDao(database: Database) = database.comicsDao()
 
-  @[Provides Singleton]
+  @[Provides Reusable]
   fun imagesDao(database: Database) = database.imagesDao()
 }

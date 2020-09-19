@@ -13,11 +13,15 @@
         </IssueNavigationLink>
         <IssueNavigationLink>
           <option name="issueRegexp" value="KT\-\d+" />
-          <option name="linkRegexp" value="http://youtrack.jetbrains.com/issue/$0" />
+          <option name="linkRegexp" value="https://youtrack.jetbrains.com/issue/$0" />
         </IssueNavigationLink>
         <IssueNavigationLink>
           <option name="issueRegexp" value="KEEP\-(\d+)" />
           <option name="linkRegexp" value="https://github.com/Kotlin/KEEP/issues/$1" />
+        </IssueNavigationLink>
+        <IssueNavigationLink>
+          <option name="issueRegexp" value="b/(\d+)" />
+          <option name="linkRegexp" value="https://issuetracker.google.com/issues/$1" />
         </IssueNavigationLink>
       </list>
     </option>

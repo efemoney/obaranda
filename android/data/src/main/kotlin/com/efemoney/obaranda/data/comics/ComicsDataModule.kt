@@ -22,7 +22,7 @@ import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-object ComicsDataModule {
+internal object ComicsDataModule {
 
   @[Provides Singleton]
   fun comicsApi(builder: Retrofit.Builder) =

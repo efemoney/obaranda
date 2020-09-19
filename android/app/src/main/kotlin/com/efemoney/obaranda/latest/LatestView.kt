@@ -247,7 +247,7 @@ data class ComicItem(private val comic: Comic) : Item, SupportsChange {
   override fun getChanges(n: Item) = buildChanges {
 
     if (n is ComicItem) when {
-      date != n.date -> +"date";
+      date != n.date -> +"date"
       title != n.title -> +"title"
       previewImage != n.previewImage -> +"image"
       commentsCount != n.commentsCount -> +"comments count"

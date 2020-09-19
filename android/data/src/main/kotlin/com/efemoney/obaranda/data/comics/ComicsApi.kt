@@ -23,8 +23,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-
-interface ComicsApi {
+internal interface ComicsApi {
 
   @GET("comics")
   suspend fun getComics(@Query("limit") limit: Int, @Query("offset") offset: Int): List<Comic>

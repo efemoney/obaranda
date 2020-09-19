@@ -19,7 +19,6 @@ import android.app.Application
 import com.efemoney.obaranda.app.Scoped
 import com.efemoney.obaranda.app.To
 import com.efemoney.obaranda.data.DaggerDataComponent
-import com.efemoney.obaranda.data.DataComponent
 import com.efemoney.obaranda.data.VariantModule
 import dagger.Component
 import dagger.Module

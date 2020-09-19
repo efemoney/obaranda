@@ -83,5 +83,5 @@ dependencies {
 
   implementation("com.github.trickl:palette:0.1.1")
   implementation("ch.qos.logback:logback-classic:1.2.3")
-  implementation("com.google.firebase:firebase-admin:6.13.0")
+  implementation("com.google.firebase:firebase-admin:7.0.0")
 }

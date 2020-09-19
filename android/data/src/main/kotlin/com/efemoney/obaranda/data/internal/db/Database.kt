@@ -40,12 +40,12 @@ abstract class Database : RoomDatabase() {
 
 object Converters {
 
-  @[JvmStatic TypeConverter]
-  fun fromInstant(instant: Instant?) = ISO_INSTANT.format(instant)
+  @TypeConverter
+  fun fromInstant(instant: Instant?): String = ISO_INSTANT.format(instant)
 
-  @[JvmStatic TypeConverter]
-  fun fromOffsetDateTime(date: OffsetDateTime?) = ISO_OFFSET_DATE_TIME.format(date)
+  @TypeConverter
+  fun fromOffsetDateTime(date: OffsetDateTime?): String = ISO_OFFSET_DATE_TIME.format(date)
 
-  @[JvmStatic TypeConverter]
-  fun toOffsetDateTime(value: String?) = ISO_OFFSET_DATE_TIME.parse(value, OffsetDateTime::from)
+  @TypeConverter
+  fun toOffsetDateTime(value: String?): OffsetDateTime = ISO_OFFSET_DATE_TIME.parse(value, OffsetDateTime::from)
 }

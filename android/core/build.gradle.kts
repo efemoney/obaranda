@@ -20,8 +20,6 @@ plugins {
   kotlin("android")
 }
 
-android.buildFeatures.buildConfig = false
-
 dependencies {
   api(Deps.kotlin.stdlib.jdk8)
   api(Deps.androidx.coreKtx)

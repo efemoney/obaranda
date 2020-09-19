@@ -18,36 +18,37 @@
 import org.gradle.api.internal.artifacts.dsl.ParsedModuleStringNotation
 
 object Versions {
-  const val agp = "4.1.0-alpha10"
-
-  const val kotlin = "1.3.72"
-  const val ktor = "1.3.2"
-  const val kotlinpoet = "1.5.0"
-  const val coroutines = "1.3.7"
-  const val dagger = "2.28"
-  const val hilt = "2.28-alpha"
-  const val moshi = "1.9.2"
+  const val agp = "4.2.0-alpha11"
+  const val kotlin = "1.4.10"
+  const val ktor = "1.4.0"
+  const val kotlinpoet = "1.6.0"
+  const val coroutines = "1.3.9"
+  const val dagger = "2.29"
+  const val hilt = "$dagger-alpha"
+  const val moshi = "1.10.0"
   const val retrofit = "2.9.0"
-  const val okio = "2.6.0"
-  const val okhttp = "4.7.2"
+  const val okio = "2.8.0"
+  const val okhttp = "4.8.1"
   const val store = "4.0.0-alpha04"
   const val glide = "4.11.0"
-  const val material = "1.3.0-alpha01"
+  const val material = "1.3.0-alpha02"
   const val timber = "4.7.1"
-  const val flowBinding = "0.12.0"
+  const val flowBinding = "1.0.0-alpha04"
 
   object androidx {
-    const val core = "1.4.0-alpha01"
+    const val core = "1.5.0-alpha02"
+    const val hilt = "1.0.0-alpha02"
+    const val compose = "1.0.0-alpha02"
     const val activity = "1.2.0-alpha03"
-    const val appcompat = "1.3.0-alpha01"
-    const val fragment = "1.3.0-alpha05"
+    const val appcompat = "1.3.0-alpha02"
+    const val fragment = "1.3.0-alpha08"
     const val coordinatorLayout = "1.1.0"
-    const val constraintLayout = "2.0.0-beta6"
+    const val constraintLayout = "2.0.1"
     const val recyclerview = "1.2.0-alpha02"
     const val recyclerviewSelection = "1.1.0-alpha06"
-    const val lifecycle = "2.3.0-alpha03"
-    const val navigation = "2.3.0-beta01"
-    const val room = "2.2.5"
+    const val lifecycle = "2.3.0-alpha07"
+    const val navigation = "2.3.0"
+    const val room = "2.3.0-alpha02"
     const val preference = "1.1.1"
   }
 
@@ -134,18 +135,24 @@ object Deps {
     const val recyclerViewSelection =
       "androidx.recyclerview:recyclerview-selection:${Versions.androidx.recyclerviewSelection}"
 
+    object compose {
+      const val ui = "androidx.compose.ui:ui:${Versions.androidx.compose}"
+      const val material = "androidx.compose.material:material:${Versions.androidx.compose}"
+      const val animation = "androidx.compose.animation:animation:${Versions.androidx.compose}"
+    }
+
+    object ui {
+      const val tooling = "androidx.ui:ui-tooling:${Versions.androidx.compose}"
+    }
+
     object navigation {
-      const val common = "androidx.navigation:navigation-common:${Versions.androidx.navigation}"
+      const val uiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.androidx.navigation}"
       const val commonKtx = "androidx.navigation:navigation-common-ktx:${Versions.androidx.navigation}"
-      const val fragment = "androidx.navigation:navigation-fragment:${Versions.androidx.navigation}"
       const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx.navigation}"
-      const val runtime = "androidx.navigation:navigation-runtime:${Versions.androidx.navigation}"
       const val runtimeKtx = "androidx.navigation:navigation-runtime-ktx:${Versions.androidx.navigation}"
       const val safeArgsGenerator = "androidx.navigation:navigation-safe-args-generator:${Versions.androidx.navigation}"
       const val safeArgsGradlePlugin =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidx.navigation}"
-      const val ui = "androidx.navigation:navigation-ui:${Versions.androidx.navigation}"
-      const val uiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.androidx.navigation}"
     }
 
     object lifecycle {
@@ -170,6 +177,12 @@ object Deps {
       const val runtime = "androidx.room:room-runtime:${Versions.androidx.room}"
       const val compiler = "androidx.room:room-compiler:${Versions.androidx.room}"
     }
+
+    object hilt {
+      const val work = "androidx.hilt:hilt-work:${Versions.androidx.hilt}"
+      const val compiler = "androidx.hilt:hilt-compiler:${Versions.androidx.hilt}"
+      const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.androidx.hilt}"
+    }
   }
 
   object flowBinding {
@@ -193,6 +206,7 @@ object Deps {
     }
 
     object hilt : Dep("com.google.dagger:hilt-android:${Versions.hilt}") {
+      const val testing = "com.google.dagger:hilt-android-testing:${Versions.hilt}"
       const val compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
       const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
     }
@@ -219,9 +233,7 @@ object Deps {
     }
   }
 
-  object store : Dep("com.dropbox.mobile.store:store4:${Versions.store}") {
-
-  }
+  object store : Dep("com.dropbox.mobile.store:store4:${Versions.store}")
 }
 
 object Plugins {
