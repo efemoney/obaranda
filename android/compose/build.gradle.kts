@@ -24,7 +24,13 @@ plugins {
 android {
   defaultConfig.applicationId = "dev.efemoney.obaranda"
   buildFeatures.compose = true
-  kotlinOptions.useIR = true
+  kotlinOptions {
+    useIR = true
+    freeCompilerArgs = freeCompilerArgs + listOf(
+      "-Xallow-jvm-ir-dependencies",
+      "-Xskip-prerelease-check"
+    )
+  }
   composeOptions {
     kotlinCompilerVersion = Versions.kotlin
     kotlinCompilerExtensionVersion = Versions.androidx.compose
@@ -40,8 +46,8 @@ dependencies {
   implementation(Deps.androidx.ui.tooling)
   implementation(Deps.androidx.compose.ui)
   implementation(Deps.androidx.compose.material)
-  implementation("io.coil-kt:coil:1.0.0-rc2")
-  implementation("dev.chrisbanes.accompanist:accompanist-coil:0.2.1")
+  implementation("io.coil-kt:coil:1.0.0-rc3")
+  implementation("dev.chrisbanes.accompanist:accompanist-coil:0.2.2")
   implementation(Deps.androidx.lifecycle.runtime)
   implementation(Deps.androidx.lifecycle.viewmodelKtx)
   implementation(Deps.androidx.navigation.runtimeKtx)

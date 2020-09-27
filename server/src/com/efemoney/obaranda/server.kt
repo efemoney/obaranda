@@ -16,9 +16,9 @@
 package com.efemoney.obaranda
 
 import com.ryanharter.ktor.moshi.moshi
-import io.ktor.application.Application
-import io.ktor.application.install
-import io.ktor.auth.authenticate
+import com.sun.tools.javac.file.Locations
+import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.features.*
 import io.ktor.routing.*
 import org.slf4j.event.Level.INFO
@@ -29,11 +29,14 @@ fun Application.features() {
   install(Compression) { gzip() }
   install(ContentNegotiation) { moshi(component.moshi()) }
   install(CallLogging) { level = INFO }
+
+  install(Locations)
 }
 
 fun Application.routes() = routing {
 
   route("/api") {
+    get<> {}
     get("/comics", GetAllComics)
     get("/comics/{page}", GetComicPage)
     get("/comics/latest", GetComicLatest)

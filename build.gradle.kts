@@ -22,7 +22,7 @@ import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.gradle.api.JavaVersion.VERSION_1_8 as java8
 
 plugins {
-  id("com.github.ben-manes.versions") version "0.31.0"
+  id("com.github.ben-manes.versions") version "0.33.0"
 }
 
 allprojects {

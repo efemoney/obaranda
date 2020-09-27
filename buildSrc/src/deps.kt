@@ -18,17 +18,17 @@
 import org.gradle.api.internal.artifacts.dsl.ParsedModuleStringNotation
 
 object Versions {
-  const val agp = "4.2.0-alpha11"
+  const val agp = "4.2.0-alpha12"
   const val kotlin = "1.4.10"
-  const val ktor = "1.4.0"
+  const val ktor = "1.4.1"
   const val kotlinpoet = "1.6.0"
   const val coroutines = "1.3.9"
-  const val dagger = "2.29"
+  const val dagger = "2.29.1"
   const val hilt = "$dagger-alpha"
   const val moshi = "1.10.0"
   const val retrofit = "2.9.0"
   const val okio = "2.8.0"
-  const val okhttp = "4.8.1"
+  const val okhttp = "4.9.0"
   const val store = "4.0.0-alpha04"
   const val glide = "4.11.0"
   const val material = "1.3.0-alpha02"
@@ -36,9 +36,9 @@ object Versions {
   const val flowBinding = "1.0.0-alpha04"
 
   object androidx {
-    const val core = "1.5.0-alpha02"
+    const val core = "1.5.0-alpha03"
     const val hilt = "1.0.0-alpha02"
-    const val compose = "1.0.0-alpha02"
+    const val compose = "1.0.0-alpha03"
     const val activity = "1.2.0-alpha03"
     const val appcompat = "1.3.0-alpha02"
     const val fragment = "1.3.0-alpha08"
@@ -91,6 +91,7 @@ object Deps {
   object ktor {
     const val bom = "io.ktor:ktor-bom:${Versions.ktor}"
     const val auth = "io.ktor:ktor-auth:${Versions.ktor}"
+    const val locations = "io.ktor:ktor-locations:${Versions.ktor}"
 
     object content {
       const val moshi = "com.ryanharter.ktor:ktor-moshi:1.0.1"

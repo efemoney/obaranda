@@ -17,28 +17,22 @@
 
 package dev.efemoney.obaranda.ui.comic
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Stack
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.onActive
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.util.fastForEach
-import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.navigation.fragment.navArgs
 import androidx.ui.tooling.preview.Preview
 import com.efemoney.obaranda.data.model.Image
-import com.efemoney.obaranda.ktx.d
-import com.efemoney.obaranda.ktx.f
 import dagger.hilt.android.AndroidEntryPoint
 import dev.efemoney.obaranda.ComposableFragment
 import dev.efemoney.obaranda.ui.ObarandaTheme
-import dev.efemoney.obaranda.ui.bg
 
 @AndroidEntryPoint
 class ComicScreenFragment : ComposableFragment() {
@@ -52,10 +46,11 @@ class ComicScreenFragment : ComposableFragment() {
 @Composable
 fun ComicScreen(page: Int) {
   val vm = viewModel<ComicViewModel>()
-  val model by vm.model.collectAsState()
-  val state = remember { ComicScreenState(model) }
-
   onActive { vm.loadComic(page) }
+
+  val model by vm.model.collectAsState()
+  val state = remember(model) { ComicScreenState(model) }
+
   ComicScreen(state)
 }
 
@@ -70,9 +65,7 @@ private fun ComicScreen(state: ComicScreenState) {
 
 @Composable
 private fun ComicImages(images: List<Image>) {
-  Column(
-    modifier = Modifier
-  ) {
+  Column {
     images.fastForEach {
       Image(ComicImagePainter(it))
     }
@@ -128,10 +121,8 @@ private data class ComicImagePainter(val image: Image) : Painter() {
 }
 
 @Composable
-@Preview()
-fun PreviewImage() = ObarandaTheme {
-  ComicImages(sampleImages)
-}
+@Preview(widthDp = 320)
+fun PreviewImage() = ObarandaTheme { ComicImages(sampleImages) }
 
 
 

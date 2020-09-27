@@ -31,7 +31,7 @@ import java.time.Instant
  * Added to allow serialization of Concrete collection types (ArrayList, HashSet etc) as Moshi doesn't support
  * serializing those types out of the box (only the base classes List, Set etc)
  *
- * Needed because of firebase admin or some mundane reason I do not remember
+ * Needed because of firebase admin for some mundane reason I do not remember
  */
 private abstract class MutableCollectionJsonAdapter<C : MutableCollection<T>, T> private constructor(
   private val elementAdapter: JsonAdapter<T>

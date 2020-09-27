@@ -30,10 +30,10 @@ repositories {
 }
 
 dependencies {
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0")
-  implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
-  implementation("org.jetbrains.kotlin:kotlin-noarg:1.4.0")
-  implementation("com.android.tools.build:gradle:4.2.0-alpha11")
-  implementation("com.google.dagger:hilt-android-gradle-plugin:2.28-alpha")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.10")
+  implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
+  implementation("org.jetbrains.kotlin:kotlin-noarg:1.4.10")
+  implementation("com.android.tools.build:gradle:4.2.0-alpha12")
+  implementation("com.google.dagger:hilt-android-gradle-plugin:2.29.1-alpha")
   implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0")
 }

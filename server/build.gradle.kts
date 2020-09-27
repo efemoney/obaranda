@@ -22,7 +22,7 @@ plugins {
   `kotlin-noarg`
 }
 
-application.mainClassName = "io.ktor.server.netty.EngineMain"
+application.mainClass.set("io.ktor.server.netty.EngineMain")
 
 noArg.annotation("com.efemoney.obaranda.model.NoArgConstructor")
 
@@ -75,6 +75,7 @@ dependencies {
 
   implementation(Deps.ktor.server)
   implementation(Deps.ktor.server.netty)
+  implementation(Deps.ktor.locations)
   implementation(Deps.ktor.auth)
   implementation(Deps.ktor.content.moshi)
 

@@ -15,15 +15,10 @@
 
 package com.efemoney.obaranda
 
-import io.ktor.application.call
-import io.ktor.http.HttpHeaders
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.LinkHeader
-import io.ktor.http.link
-import io.ktor.response.header
-import io.ktor.response.respond
-import io.ktor.util.getValue
-import io.ktor.util.url
+import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.response.*
+import io.ktor.util.*
 import kotlin.math.max
 
 val GetAllComics: RouteHandler = {

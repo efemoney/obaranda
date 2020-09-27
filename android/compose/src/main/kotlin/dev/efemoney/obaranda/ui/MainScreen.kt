@@ -17,21 +17,14 @@
 
 package dev.efemoney.obaranda.ui
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastForEachIndexed
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import dagger.hilt.android.AndroidEntryPoint
 import dev.efemoney.obaranda.ComposableFragment
-import dev.efemoney.obaranda.R.drawable
 import dev.efemoney.obaranda.ui.latest.LatestScreen
 
 @AndroidEntryPoint
@@ -44,20 +37,16 @@ class MainScreenFragment : ComposableFragment() {
 @Composable
 fun MainScreen() {
 
-  var selectedIndex by remember { mutableStateOf(0) }
+  val (selectedIndex, setSelected) = remember { mutableStateOf(0) }
 
-  Scaffold(bottomBar = {
-    NavBar(
-      selectedTabIndex = selectedIndex,
-      setSelectedTab = { selectedIndex = it }
-    )
-  }) {
-    if (selectedIndex == 0) LatestScreen(it)
-  }
+  Scaffold(
+    bottomBar = { MainNavBar(selectedIndex, setSelected) },
+    bodyContent = { if (selectedIndex == 0) LatestScreen(it.bottom) }
+  )
 }
 
 @Composable
-private fun NavBar(selectedTabIndex: Int, setSelectedTab: (Int) -> Unit) {
+private fun MainNavBar(selectedTabIndex: Int, setSelectedTab: (Int) -> Unit) {
 
   val items = listOf(
     "Home" to vectorResource(drawable.ic_home),
@@ -68,11 +57,10 @@ private fun NavBar(selectedTabIndex: Int, setSelectedTab: (Int) -> Unit) {
   BottomNavigation(backgroundColor = MaterialTheme.colors.surface) {
     items.fastForEachIndexed { index, (title, icon) ->
       BottomNavigationItem(
-        modifier = Modifier,
         icon = { Icon(icon, Modifier.preferredSize(16.dp)) },
         label = { Text(title) },
         selected = index == selectedTabIndex,
-        onSelect = { setSelectedTab(index) },
+        onClick = { setSelectedTab(index) },
         alwaysShowLabels = false,
         unselectedContentColor = Grey
       )

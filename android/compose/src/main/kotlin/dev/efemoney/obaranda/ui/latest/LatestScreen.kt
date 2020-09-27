@@ -20,30 +20,26 @@ import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.onActive
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceIn
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.viewinterop.viewModel
 import com.efemoney.obaranda.data.model.Comic
 import com.efemoney.obaranda.ktx.f
-import com.efemoney.obaranda.util.getSimpleRelativeDate
-import dev.efemoney.obaranda.R.drawable
 import dev.efemoney.obaranda.ui.bg
-import dev.efemoney.obaranda.ui.components.VerticalGrid
 import dev.efemoney.obaranda.ui.inDp
 
 @Composable
-fun LatestScreen(innerPadding: InnerPadding) {
+fun LatestScreen(bottomPadding: Dp) {
   val vm = viewModel<LatestViewModel>()
   val model by vm.model.collectAsState()
 
@@ -63,9 +59,11 @@ fun LatestScreen(innerPadding: InnerPadding) {
       backgroundColor = MaterialTheme.colors.background,
     )
 
-    ScrollableColumn(Modifier.padding(innerPadding).padding(top = appBarHeight), scrollState = scroll) {
-      VerticalGrid(Modifier.padding(InnerPadding(8.dp))) {
-        model.comics.fastForEach { ComicCard(it, vm::comicClicked) }
+    ScrollableColumn(scrollState = scroll) {
+      VerticalGrid(modifier = Modifier.padding(8.dp, appBarHeight, 8.dp, bottomPadding + 8.dp)) {
+        model.comics.fastForEach {
+          ComicCard(it, vm::comicClicked)
+        }
       }
     }
   }
@@ -103,8 +101,8 @@ fun ComicCard(comic: Comic, onClick: (page: Int) -> Unit = {}) {
 
       Spacer(modifier = Modifier.height(4.dp))
 
-      Row(modifier = Modifier.padding(horizontal = 8.dp), verticalGravity = Alignment.CenterVertically) {
-        TextIcon(text = comic.pubDate.getSimpleRelativeDate().toString(), iconRes = drawable.ic_date_16)
+      Row(modifier = Modifier.padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+        TextIcon(comic.pubDate.getSimpleRelativeDate().toString(), drawable.ic_date_16)
         Spacer(modifier = Modifier.weight(1f))
         TextIcon(comic.commentsCount.toString(), drawable.ic_chat_16)
       }
