@@ -18,37 +18,38 @@
 import org.gradle.api.internal.artifacts.dsl.ParsedModuleStringNotation
 
 object Versions {
-  const val agp = "4.2.0-alpha12"
-  const val kotlin = "1.4.10"
+  const val agp = "4.2.0-alpha16"
+  const val kotlin = "1.4.20-RC"
   const val ktor = "1.4.1"
   const val kotlinpoet = "1.6.0"
-  const val coroutines = "1.3.9"
+  const val coroutines = "1.4.1"
   const val dagger = "2.29.1"
   const val hilt = "$dagger-alpha"
-  const val moshi = "1.10.0"
+  const val moshi = "1.11.0"
   const val retrofit = "2.9.0"
-  const val okio = "2.8.0"
-  const val okhttp = "4.9.0"
+  const val okio = "2.9.0"
+  const val okhttp = "4.10.0-RC1"
   const val store = "4.0.0-alpha04"
+  const val coil = "1.0.0"
   const val glide = "4.11.0"
-  const val material = "1.3.0-alpha02"
+  const val material = "1.3.0-alpha03"
   const val timber = "4.7.1"
-  const val flowBinding = "1.0.0-alpha04"
+  const val flowBinding = "1.0.0-beta02"
 
   object androidx {
-    const val core = "1.5.0-alpha03"
+    const val core = "1.5.0-alpha05"
     const val hilt = "1.0.0-alpha02"
-    const val compose = "1.0.0-alpha03"
+    const val compose = "1.0.0-alpha07"
     const val activity = "1.2.0-alpha03"
     const val appcompat = "1.3.0-alpha02"
-    const val fragment = "1.3.0-alpha08"
+    const val fragment = "1.3.0-beta01"
     const val coordinatorLayout = "1.1.0"
-    const val constraintLayout = "2.0.1"
+    const val constraintLayout = "2.0.4"
     const val recyclerview = "1.2.0-alpha02"
     const val recyclerviewSelection = "1.1.0-alpha06"
-    const val lifecycle = "2.3.0-alpha07"
-    const val navigation = "2.3.0"
-    const val room = "2.3.0-alpha02"
+    const val lifecycle = "2.3.0-beta01"
+    const val navigation = "2.3.1"
+    const val room = "2.3.0-alpha03"
     const val preference = "1.1.1"
   }
 
@@ -59,12 +60,17 @@ object Versions {
 }
 
 object Deps {
+  const val coil = "io.coil-kt:coil:${Versions.coil}"
   const val okio = "com.squareup.okio:okio:${Versions.okio}"
   const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"
   const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
   const val jsr250 = "javax.annotation:jsr250-api:1.0"
   const val kotlinpoet = "com.squareup:kotlinpoet:${Versions.kotlinpoet}"
   const val autoService = "com.google.auto.service:auto-service:+"
+
+  object accompanist {
+    const val coil = "dev.chrisbanes.accompanist:accompanist-coil:0.3.3.1"
+  }
 
   object kotlin {
     const val bom = "org.jetbrains.kotlin:kotlin-bom:${Versions.kotlin}"

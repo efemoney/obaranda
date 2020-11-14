@@ -21,9 +21,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.gradle.api.JavaVersion.VERSION_1_8 as java8
 
-plugins {
-  id("com.github.ben-manes.versions") version "0.33.0"
-}
+plugins { id("com.github.ben-manes.versions") version "0.36.0" }
 
 allprojects {
   repositories {
@@ -96,7 +94,7 @@ subprojects {
         isCoreLibraryDesugaringEnabled = true
 
         project.dependencies {
-          "coreLibraryDesugaring"("com.android.tools:desugar_jdk_libs:1.0.10")
+          "coreLibraryDesugaring"("com.android.tools:desugar_jdk_libs:1.1.0")
         }
 
         sourceCompatibility = java8

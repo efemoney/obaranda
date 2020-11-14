@@ -25,42 +25,42 @@ val sampleImages = listOf(
     url = "http://obaranda.com/assets/images/comics/201710231401297524381/Gidi1.jpg",
     alt = "thisis",
     size = Size(width = 896, height = 2058),
-    palette = Palette(muted = "#ff687070".toColorInt(), vibrant = "#ff4088c0".toColorInt())
+    palette = Palette(muted = "#687070".toColorInt(), vibrant = "#4088c0".toColorInt())
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075021456465/Gidi2.jpg",
     alt = "",
     size = Size(width = 897, height = 2074),
-    palette = Palette(muted = "#ffd8e0c8".toColorInt(), vibrant = "#ff98b8d0".toColorInt())
+    palette = Palette(muted = "#d8e0c8".toColorInt(), vibrant = "#98b8d0".toColorInt())
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075033215520/Gidi3.jpg",
     alt = "",
     size = Size(width = 848, height = 1960),
-    palette = Palette(muted = "#ff687880".toColorInt(), vibrant = "#ff1898f0".toColorInt())
+    palette = Palette(muted = "#687880".toColorInt(), vibrant = "#1898f0".toColorInt())
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075043116568/Gidi4.jpg",
     alt = "",
     size = Size(width = 831, height = 2265),
-    palette = Palette(vibrant = "#ff1098f0".toColorInt(), muted = null)
+    palette = Palette(vibrant = "#1098f0".toColorInt(), muted = null)
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075055406481/Gidi5.jpg",
     alt = "",
     size = Size(width = 777, height = 2400),
-    palette = Palette(muted = "#ff9068a0".toColorInt(), null)
+    palette = Palette(muted = "#9068a0".toColorInt(), null)
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075112139934/Gidi6.jpg",
     alt = "",
     size = Size(width = 886, height = 2444),
-    palette = Palette(null, vibrant = "#ff1898f0".toColorInt())
+    palette = Palette(null, vibrant = "#1898f0".toColorInt())
   ),
   Image(
     url = "http://obaranda.com/assets/images/comics/20171024075134669475/Gidi7.gif",
     alt = "",
     size = Size(width = 967, height = 1644),
-    palette = Palette(muted = "#ffd0d8e0".toColorInt(), vibrant = "#ff5860f8".toColorInt())
+    palette = Palette(muted = "#d0d8e0".toColorInt(), vibrant = "#5860f8".toColorInt())
   )
 )

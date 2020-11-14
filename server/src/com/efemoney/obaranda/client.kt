@@ -20,11 +20,10 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import io.ktor.config.ApplicationConfig
+import io.ktor.config.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
-import okhttp3.logging.HttpLoggingInterceptor.Logger
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -56,9 +55,7 @@ internal interface ApiModule {
     @ApplicationScope
     fun okHttp(logger: org.slf4j.Logger, config: ApplicationConfig): OkHttpClient = OkHttpClient.Builder()
       .addInterceptor(
-        HttpLoggingInterceptor(object : Logger {
-          override fun log(message: String) = logger.info(message)
-        }).setLevel(Level.valueOf(config.property("okHttp.logLevel").getString()))
+        HttpLoggingInterceptor(logger::info).setLevel(Level.valueOf(config.property("okHttp.logLevel").getString()))
       ).build()
   }
 }

@@ -15,15 +15,11 @@
 
 val excludeAndroid: String? by extra
 
-plugins {
-  `gradle-enterprise`
-}
+plugins { `gradle-enterprise` }
 
-gradleEnterprise {
-  buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
-  }
+gradleEnterprise.buildScan {
+  termsOfServiceUrl = "https://gradle.com/terms-of-service"
+  termsOfServiceAgree = "yes"
 }
 
 include(
